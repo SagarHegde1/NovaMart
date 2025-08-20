@@ -102,3 +102,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+WHITENOISE_ROOT = MEDIA_ROOT
+
+# Serve media files via WhiteNoise
+STATICFILES_DIRS = [
+    BASE_DIR / "media",  # treat media folder as static files
+]
