@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+My Store
+{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto mt-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">🏬 My Store</h1>
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mt-4 px-6 py-3 rounded-lg bg-green-100 text-green-800 border border-green-300 shadow-sm">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Orders Section -->
+    <h2 class="mt-10 text-2xl font-semibold text-gray-700 mb-4">📦 My Orders</h2>
+    {% if order_items %}
+        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-lg">
+            <table class="w-full border-collapse">
+                <thead class="bg-gray-100 text-gray-700">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-sm font-medium">Order ID</th>
+                        <th class="px-6 py-3 text-left text-sm font-medium">Title</th>
+                        <th class="px-6 py-3 text-center text-sm font-medium">Quantity</th>
+                        <th class="px-6 py-3 text-right text-sm font-medium">Price</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for order_item in order_items %}
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 font-semibold text-blue-600">
+                                <a href="{% url 'my_store_order_detail' order_item.order.id %}">
+                                    #{{ order_item.order.id }}
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 text-gray-800">{{ order_item.product.title }}</td>
+                            <td class="px-6 py-4 text-center text-gray-600">{{ order_item.quantity }}</td>
+                            <td class="px-6 py-4 text-right font-semibold text-green-600">${{ order_item.get_display_price }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="mt-4 px-6 py-3 bg-gray-100 text-gray-600 rounded-lg">No orders yet...</p>
+    {% endif %}
+
+    <!-- Add Product Button -->
+    <div class="mt-8">
+        <a href="{% url 'add_product' %}" 
+           class="inline-block py-3 px-6 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow transition">
+            ➕ Add Product
+        </a>
+    </div>
+
+    <!-- Products Section -->
+    <h2 class="mt-10 text-2xl font-semibold text-gray-700 mb-4">🛍 My Products</h2>
+    {% if products %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {% for product in products %}
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="{% url 'edit_product' product.id %}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="Image of {{ product.title }}" class="w-full h-48 object-contain">
+                        {% endif %}
+                        <div class="p-4">
+                            <h2 class="text-lg font-semibold text-gray-800">{{ product.title }}</h2>
+                            <p class="text-sm text-gray-600 mt-1">${{ product.get_display_price }}</p>
+                            <hr class="my-3">
+                            <p class="text-sm"><strong>Status:</strong> 
+                                <span class="px-2 py-1 rounded-full text-xs 
+                                    {% if product.status == 'active' %}
+                                        bg-green-100 text-green-700
+                                    {% elif product.status == 'pending' %}
+                                        bg-yellow-100 text-yellow-700
+                                    {% else %}
+                                        bg-gray-200 text-gray-700
+                                    {% endif %}
+                                ">
+                                    {{ product.get_status_display }}
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="mt-4 py-4 px-8 bg-gray-100 text-gray-600 rounded-lg shadow">You don't have any products yet...</p>
+    {% endif %}
+</div>
+{% endblock %}
