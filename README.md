@@ -72,41 +72,41 @@ The platform integrates a **secure checkout process with Stripe payments** and p
 
 2. Create & activate virtual environment
 
-# On Windows
+### On Windows
 python -m venv venv
 venv\Scripts\activate
 
-# On Mac/Linux
+### On Mac/Linux
 python3 -m venv venv
 source venv/bin/activate
 
-# Install dependencies
+### Install dependencies
 
 pip install -r requirements.txt
 
-# Run database migrations
+### Run database migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-# Create superuser (for Django Admin)
+### Create superuser (for Django Admin)
 
 python manage.py createsuperuser
 
-# Collect static files
+### Collect static files
 
 python manage.py collectstatic
 
-# Start TailwindCSS (if using django-tailwind)
+### Start TailwindCSS (if using django-tailwind)
 
 python manage.py tailwind install
 
 python manage.py tailwind build
 
-# Run the development server
+### Run the development server
 
 python manage.py runserver
 
-# Open the app in your browser
+### Open the app in your browser
 
 http://127.0.0.1:8000/
