@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG=True
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = ["*"]
 
 CART_SESSION_ID = 'cart'
 SESSION_COOKIE_AGE = 86400
@@ -52,8 +52,8 @@ ROOT_URLCONF = 'novamart.urls'
 WEBSITE_URL = os.getenv("WEBSITE_URL", "http://127.0.0.1:8000/")
 
 # Stripe
-STRIPE_PUB_KEY = os.getenv("STRIPE_PUB_KEY")
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUB_KEY = ''
+STRIPE_SECRET_KEY = ''
 
 TEMPLATES = [
     {
@@ -73,11 +73,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'novamart.wsgi.application'
 
-# Database (uses DATABASE_URL if provided, else sqlite3)
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
-    )
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
 # Password validation
@@ -105,7 +105,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WHITENOISE_ROOT = MEDIA_ROOT
 
-# Serve media files via WhiteNoise
-STATICFILES_DIRS = [
-    BASE_DIR / "media",  # treat media folder as static files
-]
