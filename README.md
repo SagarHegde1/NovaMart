@@ -100,6 +100,7 @@ python manage.py collectstatic
 # Start TailwindCSS (if using django-tailwind)
 
 python manage.py tailwind install
+
 python manage.py tailwind build
 
 # Run the development server
