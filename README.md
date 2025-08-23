@@ -36,6 +36,33 @@ The platform integrates a **secure checkout process with Stripe payments** and p
 
 ---
 
+## Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home_page.PNG)
+
+### 🛒 Cart Feature
+![Cart Feature](screenshots/cart_feature.PNG)
+
+### 📋 Checkout Form
+![Checkout Form](screenshots/checkout_form.PNG)
+
+### 🏬 My Store Feature
+![My Store Feature](screenshots/myStore_feature.PNG)
+
+### 💳 Payment Feature
+![Payment Feature](screenshots/payment_feature.PNG)
+
+### 📄 Product Description
+![Product Description](screenshots/product_description.PNG)
+
+### 🔍 Search Feature
+![Search Feature](screenshots/search_feature.PNG)
+
+### ✅ Success Page
+![Success Page](screenshots/success_page.PNG)
+
+
 ## ⚡ Installation & Setup
 
 1. **Clone the repository**
