@@ -80,32 +80,32 @@ venv\Scripts\activate
 python3 -m venv venv
 source venv/bin/activate
 
-3. Install dependencies
+# Install dependencies
 
 pip install -r requirements.txt
 
-4. Run database migrations
+# Run database migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-5. Create superuser (for Django Admin)
+# Create superuser (for Django Admin)
 
 python manage.py createsuperuser
 
-6. Collect static files
+# Collect static files
 
 python manage.py collectstatic
 
-7. Start TailwindCSS (if using django-tailwind)
+# Start TailwindCSS (if using django-tailwind)
 
 python manage.py tailwind install
 python manage.py tailwind build
 
-8. Run the development server
+# Run the development server
 
 python manage.py runserver
 
-9. Open the app in your browser
+# Open the app in your browser
 
 http://127.0.0.1:8000/
