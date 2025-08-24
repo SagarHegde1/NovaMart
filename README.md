@@ -70,43 +70,43 @@ The platform integrates a **secure checkout process with Stripe payments** and p
    git clone https://github.com/yourusername/NovaMart.git
    cd NovaMart
 
-2. Create & activate virtual environment
+2. **Create & activate virtual environment**
+   ```bash
+   ### On Windows
+   python -m venv venv
+   venv\Scripts\activate
 
-### On Windows
-python -m venv venv
-venv\Scripts\activate
+   ### On Mac/Linux
+   python3 -m venv venv
+   source venv/bin/activate
 
-### On Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
+3. Install dependencies
+   ```bash
+   pip install -r requirements.txt
 
-### Install dependencies
+4. Run database migrations
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
 
-pip install -r requirements.txt
+5. Create superuser (for Django Admin)
+   ```bash
+   python manage.py createsuperuser
 
-### Run database migrations
+6. Collect static files
+   ```bash
+   python manage.py collectstatic
 
-python manage.py makemigrations
-python manage.py migrate
+7. Start TailwindCSS (if using django-tailwind)
+   ```bash
+   python manage.py tailwind install
 
-### Create superuser (for Django Admin)
+   python manage.py tailwind build
 
-python manage.py createsuperuser
+8. Run the development server
+   ```bash
+   python manage.py runserver
 
-### Collect static files
-
-python manage.py collectstatic
-
-### Start TailwindCSS (if using django-tailwind)
-
-python manage.py tailwind install
-
-python manage.py tailwind build
-
-### Run the development server
-
-python manage.py runserver
-
-### Open the app in your browser
-
-http://127.0.0.1:8000/
+9. Open the app in your browser
+    ```bash
+   http://127.0.0.1:8000/
